@@ -99,3 +99,4 @@ $ sudo apachectl restart
 2. Best resource for starting up https://github.com/asseldonk/tensorflow-jupyter-tutorial
 3. Installing Tensorflow on GPU https://medium.com/@giltamari/tensorflow-getting-started-gpu-installation-on-ec2-9b9915d95d6f#.rxse36e0i
 4. Installing flask http://www.datasciencebytes.com/bytes/2015/02/24/running-a-flask-app-on-aws-ec2/
+5. Existing AMI https://github.com/ritchieng/tensorflow-aws-ami
