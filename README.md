@@ -1,30 +1,30 @@
-# fashion-recognition-service_cchub
+## fashion-recognition-service_cchub
 A simple image recognition agent for fashion items. 
 
-- Create images folders and upload to s3
+#### 1. Create images folders and upload to s3
 #Done
 - Login to instance
-#Done
 
-## 1. Downoload the images and unzip
+
+#### 2. Downoload the images and unzip
 ```
 $ curl -O https://s3.amazonaws.com/onomachinelearning/fashion_items.tar.gz
 $ tar xzf fashion_items.tar.gz 
 ```
 
-## 2. Run the following to retrain the InceptionV3 model with your images
+#### 3. Run the following to retrain the InceptionV3 model with your images
 ```
 $ vi tensorflow/workspace.bzl 
 $ bazel build tensorflow/examples/image_retraining:retrain
 $ bazel-bin/tensorflow/examples/image_retraining/retrain --image_dir ~/fashion_items
 ```
 
-## 3. Test that the model is working
+#### 4. Test that the model is working
 ```
 $ bazel-bin/tensorflow/examples/label_image/label_image --graph=/tmp/output_graph.pb --labels=/tmp/output_labels.txt -- output_layer=final_result --image=$HOME/fashion_items/shoes/zzhumb-300-002.jpg
 ```
 
-## 4. Copy the model to another permanent folder
+#### 5. Copy the model to another permanent folder
 ```
 $ mkrdir mymodel
 $ cd ~
@@ -33,13 +33,13 @@ $ cd /tmp
 $ cp {output_graph.pb, output_label.txt} ~/mymodel
 ```
 
-## 5. Making sure it still works
+#### 6. Making sure it still works
 ```
 $ bazel-bin/tensorflow/examples/label_image/label_image --graph=$HOME/mytmp/output_graph.pb --labels=$HOME/mytmp/output_labels.txt --output_layer=final_result --image=$HOME/fashion_items/shoes/zzhumb-300-002.jpg
 ```
 
 
-## 6. Install flask
+#### 7. Install flask
 http://www.datasciencebytes.com/bytes/2015/02/24/running-a-flask-app-on-aws-ec2/
 ```
 $ sudo apt-get update
@@ -57,7 +57,7 @@ $ echo "Hello World" > index.html
 $ touch flaskapp.py
 $ vi flaskapp.py
 ```
-### 7. Copy models to app folder
+#### 8. Copy models to app folder
 ```
 $ cd ~/flaskapp
 $ cp ~/fashion-image-recongizer/flaskapp.py .
@@ -65,6 +65,8 @@ $ cp /home/ubuntu/mytmp/output_graph.pb .
 $ cp /home/ubuntu/mytmp/output_labels.txt .
 ```
 
-#### 8. Useful commands
+#### 9. Useful commands
+```
 $ sudo vi /var/log/apache2/error.log
 $ sudo apachectl restart
+```
