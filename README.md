@@ -2,9 +2,6 @@
 A simple image recognition agent for fashion items. 
 
 #### 1. Create images folders and upload to s3
-#Done
-- Login to instance
-
 
 #### 2. Downoload the images and unzip
 ```
@@ -64,9 +61,16 @@ $ cp ~/fashion-image-recongizer/flaskapp.py .
 $ cp /home/ubuntu/mytmp/output_graph.pb .
 $ cp /home/ubuntu/mytmp/output_labels.txt .
 ```
+#### 9. App code
+<script src="https://gist.github.com/Innarticles/3a4a2f4797e44a53f2143970c65de056#file-flaskapp-py"></script>
 
-#### 9. Useful commands
+
+#### 10. Useful commands
+see app logs
 ```
 $ sudo vi /var/log/apache2/error.log
+```
+#### 11. Restart server
+```
 $ sudo apachectl restart
 ```
