@@ -62,15 +62,40 @@ $ cp /home/ubuntu/mytmp/output_graph.pb .
 $ cp /home/ubuntu/mytmp/output_labels.txt .
 ```
 #### 9. App code
-<script src="https://gist.github.com/Innarticles/3a4a2f4797e44a53f2143970c65de056#file-flaskapp-py"></script>
+https://gist.github.com/Innarticles/3a4a2f4797e44a53f2143970c65de056#file-flaskapp-py"
+
+- main function /classify
+```python
+# Classificaiton endpoint
+@app.route("/classify", methods=["POST"])
+def classify():
+
+  create_graph()
+  print("Model loaded")
+
+  node_lookup = NodeLookup()
+  print("Node lookup loaded")
+
+
+  predictions = dict(run_inference_on_image(request.data))
+  print(predictions)
+  return jsonify(predictions=predictions)
+```
+
 
 
 #### 10. Useful commands
-see app logs
+See app logs
 ```
 $ sudo vi /var/log/apache2/error.log
 ```
-#### 11. Restart server
+Restart server
 ```
 $ sudo apachectl restart
 ```
+
+#### 11. Useful resources
+1. Dive straight in https://gist.github.com/Innarticles/3a4a2f4797e44a53f2143970c65de056#file-flaskapp-py
+2. Best resource for starting up https://github.com/asseldonk/tensorflow-jupyter-tutorial
+3. Installing Tensorflow on GPU https://medium.com/@giltamari/tensorflow-getting-started-gpu-installation-on-ec2-9b9915d95d6f#.rxse36e0i
+4. Installing flask http://www.datasciencebytes.com/bytes/2015/02/24/running-a-flask-app-on-aws-ec2/
